@@ -27,12 +27,12 @@ declare cyan="\e[36m"
 declare white="\e[37m"
 declare reset="\e[0m"
 
-echo "+----------------------------------------------------------------+" #33
+echo "\n\n\n+----------------------------------------------------------------+" #33
 echo "+------------------------ Your Setup File! ----------------------+" #33 - 8*2
 echo "|  Q: What is the setup file? A: It just makes your life easier  |" # 33 - 4
 echo "+----------------------------------+-----------------------------+"
 echo "|  Use setup help if you're stuck  |"
-echo "+----------------------------------+"
+echo "+----------------------------------+\n\n\n"
 
 
 HELP[update]='runs apt-get update and upgrade'
