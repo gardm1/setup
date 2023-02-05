@@ -32,7 +32,7 @@ echo "|                         Your Setup File!                       |" #33 - 
 echo "+----------------------------------------------------------------+"
 echo "|  Q: What is the setup file? A: It just makes your life easier  |" #33 - 4
 echo -e "+----------------------------------------------------------------+\n\n"
-echo "Use setup help if you're stuck"
+echo "Use *setup help* if you're stuck"
 
 
 HELP[update]='runs apt-get update and upgrade'
