@@ -27,8 +27,15 @@ declare cyan="\e[36m"
 declare white="\e[37m"
 declare reset="\e[0m"
 
+echo "+----------------------------------------------------------------+" #33
+echo "+------------------------ Your Setup File! ----------------------+" #33 - 8*2
+echo "|  Q: What is the setup file? A: It just makes your life easier  |" # 33 - 4
+echo "+----------------------------------+-----------------------------+"
+echo "|  Use setup help if you're stuck  |"
+echo "+----------------------------------+"
 
-help[update]='runs apt-get update and upgrade'
+
+HELP[update]='runs apt-get update and upgrade'
 x.update () {
 	set -x
 	sudo apt-get -y update
@@ -36,12 +43,12 @@ x.update () {
 	set +x
 }
 
-help[go]='runs apt-get -y install golang gopls'
+HELP[go]='runs apt-get -y install golang gopls'
 x.go () {
 	sudo apt-get -y install golang gopls
 }
 
-help[python]='runs apt-get -y insall python-is-python3'
+HELP[python]='runs apt-get -y insall python-is-python3'
 x.python () {
 	sudo apt-get -y install python-is-python3
 }
@@ -58,12 +65,12 @@ x.gh () {
 }
 
 
-help[bash]='downloads .bashrc from github/gardm1/dot'
+HELP[bash]='downloads .bashrc from github/gardm1/dot'
 x.bash () {
 	curl -fssl https://raw.githubusercontent.com/gardm1/dot/.bashrc -o "$home/.bashrc"
 }
 
-help[vim]='downloads vim dependencies from github/gardm1/dot/vim'
+HELP[vim]='downloads vim dependencies from github/gardm1/dot/vim'
 x.vim () {
 	curl -fssl https://raw.githubusercontent.com/gardm1/dot/vim/.vimrc -o "$home/.vimrc"
 }
