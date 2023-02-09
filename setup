@@ -18,7 +18,7 @@ mkdir "$HOME/Repos/github.com/$(whoami)"
 
 declare -A HELP
 declare -A CONF
-
+# Hello
 echo -e "\n\n+----------------------------------------------------------------+" #33
 echo "|                         Your Setup File!                       |" #33 - 8*2
 echo "+----------------------------------------------------------------+"
