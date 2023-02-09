@@ -10,22 +10,9 @@ set -e -o pipefail
 : "${EXE:="${0##*/}"}"
 
 export NEEDRESTART_SUSPEND=yes
-export HOMEBIN="$HOME/.local/bin"
-
-mkdir -p "$HOMEBIN"
 
 declare -A HELP
 declare -A CONF
-
-declare black="\e[30m"
-declare red="\e[31m"
-declare green="\e[32m"
-declare yellow="\e[33m"
-declare blue="\e[34m"
-declare magenta="\e[35m"
-declare cyan="\e[36m"
-declare white="\e[37m"
-declare reset="\e[0m"
 
 echo -e "\n\n+----------------------------------------------------------------+" #33
 echo "|                         Your Setup File!                       |" #33 - 8*2
@@ -67,17 +54,17 @@ x.gh () {
 
 HELP[bash]='downloads .bashrc from github/gardm1/dot'
 x.bash () {
-	curl -fssl https://raw.githubusercontent.com/gardm1/dot/.bashrc -o "$HOME/.bashrc"
+	curl -fssl https://raw.githubusercontent.com/gardm1/dot/main/.bashrc -o "$HOME/.bashrc"
 }
 
 HELP[vim]='downloads vim dependencies from github/gardm1/dot/vim'
 x.vim () {
-	curl -fssl https://raw.githubusercontent.com/gardm1/dot/vim/.vimrc -o "$HOME/.vimrc"
+	curl -fssl https://raw.githubusercontent.com/gardm1/dot/main/vim/.vimrc -o "$HOME/.vimrc"
 }
 
 HELP[tmux]='Downloads tmux dependencies from github/gardm1/dot/tmux'
 x.tmux () {
-	curl -fsSL https://raw.githubusercontent.com/gardm1/dot/tmux/.tmux.conf -o "$HOME/.tmux.conf"
+	curl -fsSL https://raw.githubusercontent.com/gardm1/dot/main/tmux/.tmux.conf -o "$HOME/.tmux.conf"
 }
 
 
