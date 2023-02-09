@@ -14,7 +14,7 @@ export HOMEBIN="$HOME/.local/bin"
 
 mkdir -p "$HOMEBIN"
 
-#mkdir -p "$HOME/Repos/github.com/$(whoami)"
+mkdir -p "$HOME/Repos/github.com/$(whoami)"
 
 declare -A HELP
 declare -A CONF
