@@ -54,12 +54,12 @@ x.gh () {
 
 HELP[bash]='downloads .bashrc from github/gardm1/dot'
 x.bash () {
-	curl -fssl https://raw.githubusercontent.com/gardm1/dot/main/.bashrc -o "$HOME/.bashrc"
+	curl -fsSL https://raw.githubusercontent.com/gardm1/dot/main/.bashrc -o "$HOME/.bashrc"
 }
 
 HELP[vim]='downloads vim dependencies from github/gardm1/dot/vim'
 x.vim () {
-	curl -fssl https://raw.githubusercontent.com/gardm1/dot/main/vim/.vimrc -o "$HOME/.vimrc"
+	curl -fsSL https://raw.githubusercontent.com/gardm1/dot/main/vim/.vimrc -o "$HOME/.vimrc"
 }
 
 HELP[tmux]='Downloads tmux dependencies from github/gardm1/dot/tmux'
