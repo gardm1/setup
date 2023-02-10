@@ -47,7 +47,7 @@ x.python () {
 
 HELP[cpp]='runs apt-get -y install clang'
 x.clang () {
-	sudo apt-get -y install clang
+	sudo apt-get install clang-12 --install-suggests
 }
 
 x.gh () {
