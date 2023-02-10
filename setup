@@ -5,7 +5,7 @@ set -e -o pipefail
 (( BASH_VERSINFO[0] < 4 )) && echo "Bash 4+ required." && exit 1
 
 : "${PAGER:=more}"
-: "${EDITOR:=vi}"
+: "${EDITOR:=vim}"
 : "${HELP_BROWSER:=}"
 : "${EXE:="${0##*/}"}"
 
