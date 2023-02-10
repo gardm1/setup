@@ -45,6 +45,11 @@ x.python () {
 	sudo apt-get -y install python-is-python3
 }
 
+HELP[cpp]='runs apt-get -y install clang'
+x.clang () {
+	sudo apt-get -y install clang
+}
+
 x.gh () {
 	curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | \
       sudo dd of=/etc/apt/trusted.gpg.d/githubcli-archive-keyring.gpg
