@@ -71,8 +71,11 @@ HELP[vim]='downloads vim dependencies from github/gardm1/dot/vim and sets up vim
 x.vim () {
 	curl -fsSL https://raw.githubusercontent.com/gardm1/dot/main/vim/.vimrc -o "$HOME/.vimrc"
 	
-	curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-   	    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	#curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+   	#    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	    
+	mkdir -p ~/.vim/autoload/
+	curl -fsSL https://raw.githubusercontent.com/gardm1/dot/main/vim/.vim/autoload/plug.vim -o "$HOME/.vim/autoload/plug.vim"
 	    
 	vim +PlugInstall +qall
 }
