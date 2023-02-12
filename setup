@@ -66,8 +66,11 @@ HELP[bash]='downloads .bashrc from github/gardm1/dot and shellcheck version 0.8.
 x.bash () {
 	curl -fsSL https://raw.githubusercontent.com/gardm1/dot/main/.bashrc -o "$HOME/.bashrc"
 	
+	#wget -O - https://github.com/koalaman/shellcheck/releases/download/v0.8.0/shellcheck-v0.8.0.linux.x86_64.tar.xz \ 
+	#	| sudo tar xJ -C /usr/local/bin/ --strip-components=1 shellcheck-v0.8.0/shellcheck && sudo chmod +x /usr/local/bin/shellcheck
+		
 	wget -O - https://github.com/koalaman/shellcheck/releases/download/v0.8.0/shellcheck-v0.8.0.linux.x86_64.tar.xz \ 
-		| sudo tar xJ -C /usr/local/bin/ --strip-components=1 shellcheck-v0.8.0/shellcheck && sudo chmod +x /usr/local/bin/shellcheck
+		| sudo tar xJ -C /usr/bin/ --strip-components=1 shellcheck-v0.8.0/shellcheck && sudo chmod +x /usr/bin/shellcheck
 }
 
 HELP[vim]='downloads vim dependencies from github/gardm1/dot/vim and sets up vim-plug'
