@@ -50,6 +50,12 @@ x.clang () {
 	sudo apt-get install clang-12 --install-suggests
 }
 
+HELP[shellcheck='Installs shellcheck v.0.8.0'
+x.shellcheck () {
+	wget -O - https://github.com/koalaman/shellcheck/releases/download/v0.8.0/shellcheck-v0.8.0.linux.x86_64.tar.xz \
+	    | sudo tar xJ -C /usr/bin/ --strip-components=1 shellcheck-v0.8.0/shellcheck && sudo chmod +x /usr/bin/shellcheck
+}
+
 x.gh () {
 	curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | \
       sudo dd of=/etc/apt/trusted.gpg.d/githubcli-archive-keyring.gpg
@@ -71,12 +77,12 @@ x.bash () {
 	
 	#wget -O - https://github.com/koalaman/shellcheck/releases/download/v0.8.0/shellcheck-v0.8.0.linux.x86_64.tar.xz | sudo tar xJ -C /usr/bin/ --strip-components=1 shellcheck-v0.8.0/shellcheck && sudo chmod +x /usr/bin/shellcheck
 		
-	if [ ! -f /usr/bin/shellcheck ]; then
-		wget -O - https://github.com/koalaman/shellcheck/releases/download/v0.8.0/shellcheck-v0.8.0.linux.x86_64.tar.xz \ 
-			| sudo tar xJ -C /usr/bin/ --strip-components=1 shellcheck-v0.8.0/shellcheck && sudo chmod +x /usr/bin/shellcheck
-	fi
+	#if [ ! -f /usr/bin/shellcheck ]; then
+	#	wget -O - https://github.com/koalaman/shellcheck/releases/download/v0.8.0/shellcheck-v0.8.0.linux.x86_64.tar.xz \ 
+	#		| sudo tar xJ -C /usr/bin/ --strip-components=1 shellcheck-v0.8.0/shellcheck && sudo chmod +x /usr/bin/shellcheck
+	#fi
 	
-	shellcheck --version
+	#shellcheck --version
 }
 
 HELP[vim]='downloads vim dependencies from github/gardm1/dot/vim and sets up vim-plug'
@@ -90,8 +96,6 @@ x.vim () {
 	curl -fsSL https://raw.githubusercontent.com/gardm1/dot/main/vim/.vim/autoload/plug.vim -o "$HOME/.vim/autoload/plug.vim"
 		    
 	vim +PlugInstall +qall
-	
-	echo "Use ./setup bash, to setup shellcheck. Shellcheck is used in .vimrc"
 }
 
 HELP[tmux]='Downloads tmux dependencies from github/gardm1/dot/tmux'
