@@ -47,12 +47,12 @@ x.python () {
 
 HELP[clang]='runs apt-get install clang and all packages'
 x.clang () {
-	sudo apt-get install clang --install-suggests
+	sudo apt-get install clang-12 --install-suggests
 }
 
 HELP[clanglight]='runs apt-get install clang-12'
 x.clanglight () {
-	sudo apt-get install clang
+	sudo apt-get install clang-12
 }
 
 HELP[shellcheck]='Installs shellcheck v.0.8.0'
