@@ -45,9 +45,14 @@ x.python () {
 	sudo apt-get -y install python-is-python3
 }
 
-HELP[cpp]='runs apt-get -y install clang'
+HELP[clang]='runs apt-get install clang-12 and all packages'
 x.clang () {
 	sudo apt-get install clang-12 --install-suggests
+}
+
+HELP[clanglight]='runs apt-get install clang-12'
+x.clanglight () {
+	sudo apt-get install clang-12
 }
 
 HELP[shellcheck]='Installs shellcheck v.0.8.0'
@@ -76,14 +81,8 @@ x.bash () {
 HELP[vim]='downloads vim dependencies from github/gardm1/dot/vim and sets up vim-plug'
 x.vim () {
 	curl -fsSL https://raw.githubusercontent.com/gardm1/dot/main/vim/.vimrc -o "$HOME/.vimrc"
-	
-	#curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-   	#    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-	    
-	mkdir -p ~/.vim/autoload/
-	curl -fsSL https://raw.githubusercontent.com/gardm1/dot/main/vim/.vim/autoload/plug.vim -o "$HOME/.vim/autoload/plug.vim"
 		    
-	vim +PlugInstall +qall
+	#vim +PlugInstall +qall
 }
 
 HELP[vimplugins]='Installs plug, from souce, sets up plugins in .vimrc'
