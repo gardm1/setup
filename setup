@@ -73,19 +73,17 @@ x.gh () {
 }
 
 
-HELP[bash]='downloads .bashrc from github/gardm1/dot and shellcheck version 0.8.0'
+HELP[bash]='downloads .bashrc from github/gardm1/dot'
 x.bash () {
 	curl -fsSL https://raw.githubusercontent.com/gardm1/dot/main/.bashrc -o "$HOME/.bashrc"
 }
 
-HELP[vim]='downloads vim dependencies from github/gardm1/dot/vim and sets up vim-plug'
+HELP[vim]='downloads vim dependencies from github/gardm1/dot/vim'
 x.vim () {
 	curl -fsSL https://raw.githubusercontent.com/gardm1/dot/main/vim/.vimrc -o "$HOME/.vimrc"
-		    
-	#vim +PlugInstall +qall
 }
 
-HELP[vimplugins]='Installs plug, from souce, sets up plugins in .vimrc'
+HELP[vimplugins]='Installs plug, from junegunn, sets up plugins in .vimrc'
 x.vimplugins () {
 	curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 	    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
