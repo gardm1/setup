@@ -45,14 +45,14 @@ x.python () {
 	sudo apt-get -y install python-is-python3
 }
 
-HELP[clang]='runs apt-get install clang-12 and all packages'
+HELP[clang]='runs apt-get install clang and all packages'
 x.clang () {
-	sudo apt-get install clang-12 --install-suggests
+	sudo apt-get install clang --install-suggests
 }
 
 HELP[clanglight]='runs apt-get install clang-12'
 x.clanglight () {
-	sudo apt-get install clang-12
+	sudo apt-get install clang
 }
 
 HELP[shellcheck]='Installs shellcheck v.0.8.0'
