@@ -46,7 +46,7 @@ x.python () {
 }
 
 HELP[clang]='runs apt-get install clang and all packages'
-x.clang () {
+x.clangheavy () {
 	sudo apt-get install clang-12 --install-suggests
 }
 
