@@ -45,7 +45,7 @@ x.python () {
 	sudo apt-get -y install python-is-python3
 }
 
-HELP[clang]='runs apt-get install clang and all packages'
+HELP[clang]='runs apt-get install clang-12 and all packages'
 x.clangheavy () {
 	sudo apt-get install clang-12 --install-suggests
 }
