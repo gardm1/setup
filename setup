@@ -55,8 +55,7 @@ x.clanglight () {
 	sudo apt-get install clang-12
 }
 
-HELP[glwf]='installs livglfw3 and -dev. To check if glfw was set up correctly, go to cd /usr/share/doc/libglfw3-dev/examples/
-and run gcc -o simple simple.c -lglfw -lGL -lX11 -lm followed by ./simple'
+HELP[glwf]='installs libglfw3 and -dev.'
 x.glfw () {
 	sudo apt-get install libglfw3
 	sudo apt-get install libglfw3-dev
