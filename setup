@@ -55,10 +55,20 @@ x.clanglight () {
 	sudo apt-get install clang-12
 }
 
-HELP[glwf]='installs libglfw3 and -dev.'
+HELP[glwf]='installs libglfw3 and -dev and libglm-dev... and some more.'
 x.glfw () {
-	sudo apt-get install libglfw3
-	sudo apt-get install libglfw3-dev
+	sudo apt-get update
+	sudo apt-get install cmake pkg-config
+	sudo apt-get install mesa-utils libglu1-mesa-dev freeglut3-dev mesa-common-dev
+	sudo apt-get install libglew-dev libglfw3-dev libglm-dev
+	sudo apt-get install libao-dev libmpg123-dev
+	cd /usr/local/lib/
+	sudo git clone https://github.com/glfw/glfw.git
+	cd glfw
+	sudo cmake .
+	sudo make
+	sudo make install
+	echo "Now set up GLAD!"
 }
 
 HELP[shellcheck]='Installs shellcheck v.0.8.0'
