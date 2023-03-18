@@ -95,6 +95,34 @@ x.bash () {
 	curl -fsSL https://raw.githubusercontent.com/gardm1/dot/main/.bashrc -o "$HOME/.bashrc"
 }
 
+HELP[nvim]='downloads neovim and sets up dependencies'
+x.nvim () {	
+	# Install dependencies
+	sudo apt-get update
+	sudo apt-get install -y ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip
+
+	# Clone the latest stable release of Neovim from GitHub
+	git clone https://github.com/neovim/neovim.git ~/neovim
+	cd ~/neovim
+	git checkout v0.8.3
+
+	# Build and install Neovim
+	make CMAKE_BUILD_TYPE=Release
+	sudo make install
+
+	# Create the Neovim configuration directory and file
+	mkdir -p ~/.config/nvim
+	
+	
+	# Add an alias for nvim
+	echo "alias vi=nvim" >> ~/.bashrc
+	
+	source ~/.bashrc
+	
+	echo "Neovim has been installed and set up."
+	rm -rf ~/neovim
+}
+
 HELP[vim]='downloads vim dependencies from github/gardm1/dot/vim'
 x.vim () {
 	curl -fsSL https://raw.githubusercontent.com/gardm1/dot/main/vim/.vimrc -o "$HOME/.vimrc"
