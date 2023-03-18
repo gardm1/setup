@@ -15,6 +15,7 @@ export HOMEBIN="$HOME/.local/bin"
 mkdir -p "$HOMEBIN"
 
 mkdir -p "$HOME/Repos/github.com/$(whoami)"
+mkdir -p "$HOME/temp"
 
 declare -A HELP
 declare -A CONF
@@ -43,16 +44,24 @@ x.go () {
 HELP[python]='runs apt-get -y insall python-is-python3, sets default python to python3'
 x.python () {
 	sudo apt-get -y install python-is-python3
+	
+	python --version
 }
 
 HELP[clang]='runs apt-get install clang-12 and all packages'
 x.clangheavy () {
 	sudo apt-get install clang-12 --install-suggests
+	
+	clang-12 --version
+	clang++-12 --version
 }
 
 HELP[clanglight]='runs apt-get install clang-12'
 x.clanglight () {
 	sudo apt-get install clang-12
+	
+	clang-12 --version
+	clang++-12 --version
 }
 
 HELP[glwf]='installs libglfw3 and -dev and libglm-dev... and some more.'
@@ -69,7 +78,7 @@ x.glfw () {
 	sudo cmake .
 	sudo make
 	sudo make install
-	echo "Now set up GLAD!"
+	echo -e "Now set up GLAD! Follow this link:\n https://medium.com/geekculture/a-beginners-guide-to-setup-opengl-in-linux-debian-2bfe02ccd1e"
 }
 
 HELP[shellcheck]='Installs shellcheck v.0.8.0'
@@ -121,6 +130,10 @@ x.nvim () {
 	
 	echo "Neovim has been installed and set up."
 	rm -rf ~/neovim
+	
+	nvim --version
+	
+	: "${EDITOR:=nvim}"
 }
 
 HELP[vim]='downloads vim dependencies from github/gardm1/dot/vim'
