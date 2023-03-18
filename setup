@@ -140,7 +140,10 @@ x.nvim () {
 
 HELP[nvimconfig]='Sets up a PDE enviorment with plugins, colorshceme and more'
 x.nvimconfig () {
-	echo "This will be a config functions."
+	git clone --depth 1 https://github.com/wbthomason/packer.nvim\
+ 	    ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+		
+	# Set the rest up also, you can use packer as your package manager
 }
 
 HELP[vimconfig]='Downloads vimrc from gardm1/dot/vim and gives you the option to set up plugins'
