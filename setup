@@ -5,7 +5,13 @@ set -e -o pipefail
 (( BASH_VERSINFO[0] < 4 )) && echo "Bash 4+ required." && exit 1
 
 : "${PAGER:=more}"
-: "${EDITOR:=vim}"
+
+if command -v nvim >/dev/null 2>&1; then
+	: "${EDITOR:=nvim}"
+else
+	: "${EDITOR:=vim}"
+fi
+
 : "${HELP_BROWSER:=}"
 : "${EXE:="${0##*/}"}"
 
@@ -20,13 +26,7 @@ mkdir -p "$HOME/temp"
 declare -A HELP
 declare -A CONF
 
-echo -e "\n\n+----------------------------------------------------------------+" #33
-echo "|                         Your Setup File!                       |" #33 - 8*2
-echo "+----------------------------------------------------------------+"
-echo "|  Q: What is the setup file? A: It just makes your life easier  |" #33 - 4
-echo -e "+----------------------------------------------------------------+\n\n"
-echo "Use *setup help* if you're stuck"
-
+echo "Use *help* if you're stuck"
 
 HELP[update]='runs apt-get update and upgrade'
 x.update () {
@@ -104,7 +104,7 @@ x.bash () {
 	curl -fsSL https://raw.githubusercontent.com/gardm1/dot/main/.bashrc -o "$HOME/.bashrc"
 }
 
-HELP[nvim]='downloads neovim and sets up dependencies'
+HELP[nvim]='downloads neovim'
 x.nvim () {	
 	# Install dependencies
 	sudo apt-get update
@@ -136,28 +136,54 @@ x.nvim () {
 	: "${EDITOR:=nvim}"
 }
 
-HELP[vim]='downloads vim dependencies from github/gardm1/dot/vim'
-x.vim () {
+HELP[nvimconfig]='Sets up a PDE enviorment with plugins, colorshceme and more'
+x.nvimconfig () {
+	echo "This will be a config functions."
+}
+
+HELP[vimconfig]='Downloads vimrc from gardm1/dot/vim and gives you the option to set up plugins'
+x.vimconfig () {
 	curl -fsSL https://raw.githubusercontent.com/gardm1/dot/main/vim/.vimrc -o "$HOME/.vimrc"
+
+	read -p "Do you want to install plugins etc? (y/n): " yn
+	
+	if [ $yn == "y" ]; then
+ 		sudo apt-get install cmake
+		sudo apt-get install build-essential cmake vim-nox python3-dev
+		sudo apt-get install mono-complete golang nodejs openjdk-17-jdk openjdk-17-jre npm
+		
+  		curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+      		https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+		
+		vim +'PlugInstall --sync' +qall
+		
+		cd ~/.vim/plugged/YouCompleteMe
+		python3 install.py --all
+	fi
 }
 
-HELP[vimplugins]='Installs plug, from junegunn, sets up plugins in .vimrc'
-x.vimplugins () {
-	sudo apt install cmake
+# HELP[vim]='downloads vim dependencies from github/gardm1/dot/vim'
+# x.vim () {
+#	curl -fsSL https://raw.githubusercontent.com/gardm1/dot/main/vim/.vimrc -o "$HOME/.vimrc"
+# }
 
-	sudo apt install build-essential cmake vim-nox python3-dev
-
-	sudo apt install mono-complete golang nodejs openjdk-17-jdk openjdk-17-jre npm
-
-	curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-	    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-	
-	vim +'PlugInstall --sync' +qall
-	
-	cd ~/.vim/plugged/YouCompleteMe
-
-	python3 install.py --all
-}
+# HELP[vimplugins]='Installs plug, from junegunn, sets up plugins in .vimrc'
+# x.vimplugins () {
+#	sudo apt install cmake
+#
+#	sudo apt install build-essential cmake vim-nox python3-dev
+#
+#	sudo apt install mono-complete golang nodejs openjdk-17-jdk openjdk-17-jre npm
+#
+#	curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+#	    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+#
+#	vim +'PlugInstall --sync' +qall
+#	
+#	cd ~/.vim/plugged/YouCompleteMe
+#
+#	python3 install.py --all
+# }
 
 HELP[tmux]='Downloads tmux dependencies from github/gardm1/dot/tmux'
 x.tmux () {
