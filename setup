@@ -126,7 +126,7 @@ x.nvim () {
 	
 	
 	# Add an alias for nvim
-	echo "alias vi=nvim" >> ~/.bashrc
+	echo "alias vim=nvim" >> ~/.bashrc
 	
 	source ~/.bashrc
 	
