@@ -22,7 +22,6 @@ mkdir -p "$HOMEBIN"
 
 mkdir -p "$HOME/temp"
 mkdir -p "$HOME/Repos/github.com/$(whoami)"
-mkdir -p "$HOME/temp"
 
 declare -A HELP
 declare -A CONF
@@ -49,16 +48,8 @@ x.python () {
 	python --version
 }
 
-HELP[clang]='runs apt-get install clang-12 and all packages'
-x.clangheavy () {
-	sudo apt-get install clang-12 --install-suggests
-	
-	clang-12 --version
-	clang++-12 --version
-}
-
 HELP[clanglight]='runs apt-get install clang-12'
-x.clanglight () {
+x.clang () {
 	sudo apt-get install clang-12
 	
 	clang-12 --version
@@ -124,7 +115,6 @@ x.nvim () {
 
 	# Create the Neovim configuration directory and file
 	mkdir -p ~/.config/nvim
-	
 	
 	# Add an alias for nvim
 	echo "alias vim=nvim" >> ~/.bashrc
