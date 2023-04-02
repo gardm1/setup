@@ -139,7 +139,7 @@ x.nvim () {
 HELP[nvimconfig]='Sets up a PDE enviorment with plugins, colorshceme and more'
 x.nvimconfig () {
 	git clone https://github.com/gardm1/dot.git ~/temp/
-    cp -R ~/temp/dot/.config ~/
+	cp -R ~/temp/dot/.config ~/
 	rm -rf ~/temp/dot
 }
 
