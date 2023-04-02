@@ -9,7 +9,7 @@ set -e -o pipefail
 if command -v nvim >/dev/null 2>&1; then
 	: "${EDITOR:=nvim}"
 else
-	: "${EDITOR:=vim}"
+	: "${EDITOR:=vi}"
 fi
 
 : "${HELP_BROWSER:=}"
@@ -36,6 +36,13 @@ x.update () {
 	set +x
 }
 
+HELP[all]='Installs dot files'
+x.all () {
+    git clone https://github.com/gardm1/dot.git ~/temp/
+    cp -R ~/temp/dot/. ~/
+    rm -rf ~/temp/dot
+}
+
 HELP[go]='runs apt-get -y install golang gopls'
 x.go () {
 	sudo apt-get -y install golang gopls
@@ -48,7 +55,7 @@ x.python () {
 	python --version
 }
 
-HELP[clanglight]='runs apt-get install clang-12'
+HELP[clang]='runs apt-get install clang-12'
 x.clang () {
 	sudo apt-get install clang-12
 	
@@ -131,56 +138,10 @@ x.nvim () {
 
 HELP[nvimconfig]='Sets up a PDE enviorment with plugins, colorshceme and more'
 x.nvimconfig () {
-	mkdir -p "$HOME/.config"
-	cd ~/temp
-	git clone https://github.com/gardm1/dot.git
-	cd ~/temp/dot/.config/ && mv nvim ~/.config/nvim/
-	cd ~/temp && rm -rf dot
+	git clone https://github.com/gardm1/dot.git ~/temp/
+    cp -R ~/temp/dot/.config ~/
+	rm -rf ~/temp/dot
 }
-
-HELP[vimconfig]='Downloads vimrc from gardm1/dot/vim and gives you the option to set up plugins'
-x.vimconfig () {
-	curl -fsSL https://raw.githubusercontent.com/gardm1/dot/main/vim/.vimrc -o "$HOME/.vimrc"
-
-	read -p "Do you want to install plugins etc? (y/n): " yn
-	
-	if [ $yn == "y" ]; then
- 		sudo apt-get install cmake
-		sudo apt-get install build-essential cmake vim-nox python3-dev
-		sudo apt-get install mono-complete golang nodejs openjdk-17-jdk openjdk-17-jre npm
-		
-  		curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-		    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-		
-		vim +'PlugInstall --sync' +qall
-		
-		cd ~/.vim/plugged/YouCompleteMe
-		python3 install.py --all
-	fi
-}
-
-# HELP[vim]='downloads vim dependencies from github/gardm1/dot/vim'
-# x.vim () {
-#	curl -fsSL https://raw.githubusercontent.com/gardm1/dot/main/vim/.vimrc -o "$HOME/.vimrc"
-# }
-
-# HELP[vimplugins]='Installs plug, from junegunn, sets up plugins in .vimrc'
-# x.vimplugins () {
-#	sudo apt install cmake
-#
-#	sudo apt install build-essential cmake vim-nox python3-dev
-#
-#	sudo apt install mono-complete golang nodejs openjdk-17-jdk openjdk-17-jre npm
-#
-#	curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-#	    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-#
-#	vim +'PlugInstall --sync' +qall
-#	
-#	cd ~/.vim/plugged/YouCompleteMe
-#
-#	python3 install.py --all
-# }
 
 HELP[tmux]='Downloads tmux dependencies from github/gardm1/dot/tmux'
 x.tmux () {
