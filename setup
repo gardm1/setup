@@ -145,7 +145,7 @@ x.nvimconfig () {
 
 HELP[tmux]='Downloads tmux dependencies from github/gardm1/dot/tmux'
 x.tmux () {
-	curl -fsSL https://raw.githubusercontent.com/gardm1/dot/main/tmux/.tmux.conf -o "$HOME/.tmux.conf"
+	curl -fsSL https://raw.githubusercontent.com/gardm1/dot/main/.tmux.conf -o "$HOME/.tmux.conf"
 }
 
 
