@@ -55,12 +55,12 @@ x.python () {
 	python --version
 }
 
-HELP[clang]='runs apt-get install clang-12'
+HELP[clang]='runs apt-get install clang'
 x.clang () {
-	sudo apt-get install clang-12
+	sudo apt-get install clang
 	
-	clang-12 --version
-	clang++-12 --version
+	clang --version
+	clang++ --version
 }
 
 HELP[glwf]='installs libglfw3 and -dev and libglm-dev... and some more.'
@@ -78,6 +78,7 @@ x.glfw () {
 	sudo make
 	sudo make install
 	echo -e "Now set up GLAD! Follow this link:\n https://medium.com/geekculture/a-beginners-guide-to-setup-opengl-in-linux-debian-2bfe02ccd1e"
+	# g++ main.cpp glad.c -lglfw
 }
 
 HELP[shellcheck]='Installs shellcheck v.0.8.0'
